@@ -1,10 +1,11 @@
 # Vagrant Scaleway Provider
 
 [![Gem](https://img.shields.io/gem/v/vagrant-scaleway.svg?style=flat-square)](https://rubygems.org/gems/vagrant-scaleway)
+[![Gemnasium](https://img.shields.io/gemnasium/kaorimatz/vagrant-scaleway.svg?style=flat-square)](https://gemnasium.com/kaorimatz/vagrant-scaleway)
 
-This is a [Vagrant](http://www.vagrantup.com/) plugin that adds a Scaleway
-provider to Vagrant, allowing Vagrant to control and provision machines in
-Scaleway.
+This is a [Vagrant](http://www.vagrantup.com/) plugin that adds a
+[Scaleway](https://www.scaleway.com/) provider to Vagrant, allowing Vagrant to
+control and provision machines in Scaleway.
 
 ## Features
 
@@ -16,7 +17,8 @@ Scaleway.
 ## Prerequisites
 
 Prior to using this plugin, you will first need to create an API token and
-identify your organization ID. Please see the following help for instructions.
+identify your organization ID. Please see the following help pages for
+instructions.
 
 - [How to generate an API token](https://www.scaleway.com/docs/generate-an-api-token/)
 - [How to retrieve my organization ID through the API](https://www.scaleway.com/docs/retrieve-my-organization-id-throught-the-api/)
@@ -45,6 +47,11 @@ end
 And then run `vagrant up` and specify the `scaleway` provider:
 
     $ vagrant up --provider=scaleway
+
+## Configurations
+
+Please see the [RubyDoc](http://www.rubydoc.info/gems/vagrant-scaleway/VagrantPlugins/Scaleway/Config)
+for the list of provider-specific configuration options.
 
 ## Development
 

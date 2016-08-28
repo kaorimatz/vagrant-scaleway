@@ -1,0 +1,81 @@
+en:
+  vagrant_scaleway:
+    already_status: |-
+      The machine is already %{status}.
+
+    creating_server: |-
+      Creating a server with the following settings...
+    not_created: |-
+      Server is not created. Please run `vagrant up` first.
+    ready: |-
+      Machine is booted and ready for use!
+    starting: |-
+      Starting the server...
+    stopping: |-
+      Stopping the server...
+    destroying: |-
+      Destroying the server...
+    waiting_for_ready: |-
+      Waiting for server to become "ready"...
+    waiting_for_ssh: |-
+      Waiting for SSH to become available...
+    warn_networks: |-
+      Warning! The Scaleway provider doesn't support any of the Vagrant
+      high-level network configurations (`config.vm.network`). They
+      will be silently ignored.
+    will_not_destroy: |-
+      The server '%{name}' will not be destroyed, since the confirmation
+      was declined.
+
+    config:
+      organization_required: |-
+        A organization must be specified via "organization" option.
+      token_required: |-
+        A token must be specified via "token" option.
+
+    errors:
+      fog_error: |-
+        There was an error talking to Scaleway. The error message is shown
+        below:
+
+        %{message}
+      internal_fog_error: |-
+        There was an error talking to Scaleway. The error message is shown
+        below:
+
+        Error: %{error}
+        Response: %{response}
+      server_ready_timeout: |-
+        The server never became "ready" in Scaleway. The timeout currently
+        set waiting for the server to become ready is %{timeout} seconds.
+        Please verify that the machine properly boots. If you need more time
+        set the `server_ready_timeout` configuration on the Scaleway provider.
+
+    states:
+      short_not_created: |-
+        not created
+      long_not_created: |-
+        The server is not created. Run `vagrant up` to create it.
+
+      short_stopped: |-
+        stopped
+      long_stopped: |-
+        The server is stopped. Run `vagrant up` to start it.
+
+      short_stopping: |-
+        stopping
+      long_stopping: |-
+        The server is stopping. Wait until is completely stopped to
+        run `vagrant up` and start it.
+
+      short_starting: |-
+        starting
+      long_starting: |-
+        The server is starting. You must wait for this to
+        complete before you can access it.
+
+      short_running: |-
+        running
+      long_running: |-
+        The server is running. To stop this machine, you can run
+        `vagrant halt`. To destroy the machine, you can run `vagrant destroy`.

@@ -59,17 +59,24 @@ module VagrantPlugins
           # Immediately save the ID since it is created at this point.
           env[:machine].id = server.id
 
-          begin
-            @app.call(env)
-          rescue Exception => e
-            # Delete the server
-            terminate(env)
+          # destroy the server if we were interrupted
+          destroy(env) if env[:interrupted]
 
-            raise e
-          end
+          @app.call(env)
+        end
 
-          # Terminate the server if we were interrupted
-          terminate(env) if env[:interrupted]
+        def recover(env)
+          return if env['vagrant.error'].is_a?(Vagrant::Errors::VagrantError)
+
+          destroy(env) if env[:machine].provider.state.id != :not_created
+        end
+
+        def destroy(env)
+          destroy_env = env.dup
+          destroy_env.delete(:interrupted)
+          destroy_env[:config_validate] = false
+          destroy_env[:force_confirm_destroy] = true
+          env[:action_runner].run(Action.action_destroy, destroy_env)
         end
       end
     end

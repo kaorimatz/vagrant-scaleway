@@ -54,6 +54,8 @@ module VagrantPlugins
                   response: e.response.body
           end
 
+          @logger.info("Machine '#{name}' created.")
+
           # Immediately save the ID since it is created at this point.
           env[:machine].id = server.id
 

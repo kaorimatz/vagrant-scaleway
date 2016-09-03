@@ -5,7 +5,6 @@ module VagrantPlugins
       class StopServer
         def initialize(app, _env)
           @app    = app
-          @logger = Log4r::Logger.new('vagrant_scaleway::action::stop_server')
         end
 
         def call(env)

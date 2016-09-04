@@ -159,12 +159,22 @@ module VagrantPlugins
         end
       end
 
+      # This action is called to list available images.
+      def self.action_list_images
+        Vagrant::Action::Builder.new.tap do |b|
+          b.use ConnectScaleway
+          b.use ListImages
+        end
+      end
+
       # The autoload farm
       action_root = Pathname.new(File.expand_path('../action', __FILE__))
       autoload :ConnectScaleway, action_root.join('connect_scaleway')
       autoload :CreateServer, action_root.join('create_server')
+      autoload :DestroyServer, action_root.join('destroy_server')
       autoload :IsCreated, action_root.join('is_created')
       autoload :IsStopped, action_root.join('is_stopped')
+      autoload :ListImages, action_root.join('list_images')
       autoload :MessageAlreadyCreated, action_root.join('message_already_created')
       autoload :MessageNotCreated, action_root.join('message_not_created')
       autoload :MessageWillNotDestroy, action_root.join('message_will_not_destroy')
@@ -173,7 +183,6 @@ module VagrantPlugins
       autoload :StartServer, action_root.join('start_server')
       autoload :StopServer, action_root.join('stop_server')
       autoload :WarnNetworks, action_root.join('warn_networks')
-      autoload :DestroyServer, action_root.join('destroy_server')
     end
   end
 end

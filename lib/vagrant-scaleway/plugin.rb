@@ -34,6 +34,11 @@ module VagrantPlugins
         Provider
       end
 
+      command(:scaleway, primary: false) do
+        require_relative 'command/root'
+        Command::Root
+      end
+
       # This initializes the internationalization strings.
       def self.setup_i18n
         I18n.load_path << File.expand_path('locales/en.yml', Scaleway.source_root)

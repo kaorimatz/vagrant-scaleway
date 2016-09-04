@@ -159,6 +159,14 @@ module VagrantPlugins
         end
       end
 
+      # This action is called to list available bootscripts.
+      def self.action_list_bootscripts
+        Vagrant::Action::Builder.new.tap do |b|
+          b.use ConnectScaleway
+          b.use ListBootscripts
+        end
+      end
+
       # This action is called to list available images.
       def self.action_list_images
         Vagrant::Action::Builder.new.tap do |b|
@@ -174,6 +182,7 @@ module VagrantPlugins
       autoload :DestroyServer, action_root.join('destroy_server')
       autoload :IsCreated, action_root.join('is_created')
       autoload :IsStopped, action_root.join('is_stopped')
+      autoload :ListBootscripts, action_root.join('list_bootscripts')
       autoload :ListImages, action_root.join('list_images')
       autoload :MessageAlreadyCreated, action_root.join('message_already_created')
       autoload :MessageNotCreated, action_root.join('message_not_created')

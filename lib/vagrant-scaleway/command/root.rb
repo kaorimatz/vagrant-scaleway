@@ -12,6 +12,10 @@ module VagrantPlugins
           @main_args, @sub_command, @sub_args = split_main_and_subcommand(argv)
 
           @subcommands = Vagrant::Registry.new
+          @subcommands.register(:bootscripts) do
+            require File.expand_path('../bootscripts', __FILE__)
+            Bootscripts
+          end
           @subcommands.register(:images) do
             require File.expand_path('../images', __FILE__)
             Images

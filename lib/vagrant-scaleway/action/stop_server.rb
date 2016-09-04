@@ -4,7 +4,7 @@ module VagrantPlugins
       # This stops the running server.
       class StopServer
         def initialize(app, _env)
-          @app    = app
+          @app = app
         end
 
         def call(env)

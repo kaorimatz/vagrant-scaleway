@@ -4,7 +4,7 @@ module VagrantPlugins
       # This destroys the running server.
       class DestroyServer
         def initialize(app, _env)
-          @app    = app
+          @app = app
         end
 
         def call(env)

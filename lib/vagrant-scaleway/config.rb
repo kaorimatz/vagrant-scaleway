@@ -101,7 +101,7 @@ module VagrantPlugins
       end
     end
 
-    def validate(machine)
+    def validate(_machine)
       errors = _detected_errors
 
       errors << I18n.t('vagrant_scaleway.config.organization_required') if @organization.nil?

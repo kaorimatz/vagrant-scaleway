@@ -28,8 +28,8 @@ module VagrantPlugins
       # @return [String]
       attr_accessor :organization
 
-      # The security group to associate with the server. If nil, organization's
-      # default security group will be used.
+      # The security group ID to associate with the server. If nil,
+      # organization's default security group will be used.
       #
       # @return [String]
       attr_accessor :security_group

@@ -20,6 +20,10 @@ module VagrantPlugins
             require File.expand_path('../images', __FILE__)
             Images
           end
+          @subcommands.register(:'security-groups') do
+            require File.expand_path('../security_groups', __FILE__)
+            SecurityGroups
+          end
 
           super(argv, env)
         end

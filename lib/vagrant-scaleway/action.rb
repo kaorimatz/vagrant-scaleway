@@ -175,6 +175,14 @@ module VagrantPlugins
         end
       end
 
+      # This action is called to list available security groups.
+      def self.action_list_security_groups
+        Vagrant::Action::Builder.new.tap do |b|
+          b.use ConnectScaleway
+          b.use ListSecurityGroups
+        end
+      end
+
       # The autoload farm
       action_root = Pathname.new(File.expand_path('../action', __FILE__))
       autoload :ConnectScaleway, action_root.join('connect_scaleway')
@@ -184,6 +192,7 @@ module VagrantPlugins
       autoload :IsStopped, action_root.join('is_stopped')
       autoload :ListBootscripts, action_root.join('list_bootscripts')
       autoload :ListImages, action_root.join('list_images')
+      autoload :ListSecurityGroups, action_root.join('list_security_groups')
       autoload :MessageAlreadyCreated, action_root.join('message_already_created')
       autoload :MessageNotCreated, action_root.join('message_not_created')
       autoload :MessageWillNotDestroy, action_root.join('message_will_not_destroy')

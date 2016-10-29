@@ -64,12 +64,12 @@ module VagrantPlugins
                 # the time we connect.
                 begin
                   break if env[:machine].communicate.ready?
-                rescue Exception => e
+                rescue
                   if network_ready_retries < network_ready_retries_max
                     network_ready_retries += 1
                     @logger.warn(I18n.t('vagrant_scaleway.waiting_for_ssh, retrying'))
                   else
-                    raise e
+                    raise
                   end
                 end
                 sleep 2

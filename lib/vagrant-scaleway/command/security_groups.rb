@@ -3,7 +3,6 @@ module VagrantPlugins
     module Command
       class SecurityGroups < Vagrant.plugin('2', :command)
         def execute
-          options = {}
           opts = OptionParser.new do |o|
             o.banner = 'Usage: vagrant scaleway security-groups [options]'
           end

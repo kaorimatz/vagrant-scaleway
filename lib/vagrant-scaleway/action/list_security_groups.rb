@@ -9,9 +9,9 @@ module VagrantPlugins
         def call(env)
           compute = env[:scaleway_compute]
 
-          env[:ui].info('%-37s %s' % ['Security Group ID', 'Security Group Name'], prefix: false)
+          env[:ui].info(format('%-37s %s', 'Security Group ID', 'Security Group Name'), prefix: false)
           compute.security_groups.sort_by(&:name).each do |security_group|
-            env[:ui].info('%-37s %s' % [security_group.id, security_group.name], prefix: false)
+            env[:ui].info(format('%-37s %s', security_group.id, security_group.name), prefix: false)
           end
 
           @app.call(env)

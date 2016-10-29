@@ -1,3 +1,4 @@
+# rubocop:disable Style/FileName
 require 'pathname'
 require 'vagrant-scaleway/plugin'
 

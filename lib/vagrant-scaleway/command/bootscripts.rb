@@ -3,7 +3,6 @@ module VagrantPlugins
     module Command
       class Bootscripts < Vagrant.plugin('2', :command)
         def execute
-          options = {}
           opts = OptionParser.new do |o|
             o.banner = 'Usage: vagrant scaleway bootscripts [options]'
           end

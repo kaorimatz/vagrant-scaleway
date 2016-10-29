@@ -43,10 +43,10 @@ module VagrantPlugins
         end
 
         def help
-          opts = OptionParser.new do |opts|
-            opts.banner = 'Usage: vagrant scaleway <subcommand> [<args>]'
-            opts.separator ''
-            opts.separator 'Available subcommands:'
+          opts = OptionParser.new do |o|
+            o.banner = 'Usage: vagrant scaleway <subcommand> [<args>]'
+            o.separator ''
+            o.separator 'Available subcommands:'
 
             # Add the available subcommands as separators in order to print them
             # out as well.
@@ -54,11 +54,11 @@ module VagrantPlugins
             @subcommands.each { |key, _value| keys << key.to_s }
 
             keys.sort.each do |key|
-              opts.separator "     #{key}"
+              o.separator "     #{key}"
             end
 
-            opts.separator ''
-            opts.separator 'For help on any individual subcommand run `vagrant scaleway <subcommand> -h`'
+            o.separator ''
+            o.separator 'For help on any individual subcommand run `vagrant scaleway <subcommand> -h`'
           end
 
           @env.ui.info(opts.help, prefix: false)

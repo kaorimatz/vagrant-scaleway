@@ -9,9 +9,9 @@ module VagrantPlugins
         def call(env)
           compute = env[:scaleway_compute]
 
-          env[:ui].info('%-37s %-7s %s' % ['Bootscript ID', 'Arch', 'Bootscript Title'], prefix: false)
+          env[:ui].info(format('%-37s %-7s %s', 'Bootscript ID', 'Arch', 'Bootscript Title'), prefix: false)
           compute.bootscripts.sort_by(&:title).each do |bootscript|
-            env[:ui].info('%-37s %-7s %s' % [bootscript.id, bootscript.architecture, bootscript.title], prefix: false)
+            env[:ui].info(format('%-37s %-7s %s', bootscript.id, bootscript.architecture, bootscript.title), prefix: false)
           end
 
           @app.call(env)

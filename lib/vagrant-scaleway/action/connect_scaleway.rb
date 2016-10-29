@@ -20,7 +20,8 @@ module VagrantPlugins
           fog_config = {
             provider:              :scaleway,
             scaleway_organization: provider_config.organization,
-            scaleway_token:        provider_config.token
+            scaleway_token:        provider_config.token,
+            scaleway_region:       provider_config.region
           }
 
           @logger.info('Connecting to Scaleway...')

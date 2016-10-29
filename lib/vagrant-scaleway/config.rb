@@ -28,6 +28,12 @@ module VagrantPlugins
       # @return [String]
       attr_accessor :organization
 
+      # The name of the Scaleway region to create the server in. It can also be
+      # configured with SCW_REGION environment variable. Defaults to par1.
+      #
+      # @return [String]
+      attr_accessor :region
+
       # The security group ID to associate with the server. If nil,
       # organization's default security group will be used.
       #
@@ -74,6 +80,7 @@ module VagrantPlugins
         @image                 = UNSET_VALUE
         @name                  = UNSET_VALUE
         @organization          = UNSET_VALUE
+        @region                = UNSET_VALUE
         @server_check_interval = UNSET_VALUE
         @server_ready_timeout  = UNSET_VALUE
         @security_group        = UNSET_VALUE
@@ -93,6 +100,7 @@ module VagrantPlugins
         end
 
         @organization          = ENV['SCW_ORGANIZATION'] if @organization == UNSET_VALUE
+        @region                = (ENV['SCW_REGION'] || 'par1') if @region == UNSET_VALUE
         @server_check_interval = 2 if @server_check_interval == UNSET_VALUE
         @server_ready_timeout  = 120 if @server_ready_timeout == UNSET_VALUE
         @security_group        = nil if @security_group == UNSET_VALUE

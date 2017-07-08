@@ -65,7 +65,7 @@ module VagrantPlugins
 
       # Tags to apply to the server.
       #
-      # @return [Array]
+      # @return [Array<String>]
       attr_accessor :tags
 
       # The API token to access Scaleway. It can also be configured with
@@ -73,6 +73,11 @@ module VagrantPlugins
       #
       # @return [String]
       attr_accessor :token
+
+      # Volumes to be attached to the server.
+      #
+      # @return [Array<Hash>]
+      attr_accessor :volumes
 
       def initialize
         @bootscript            = UNSET_VALUE
@@ -87,6 +92,7 @@ module VagrantPlugins
         @ssh_host_attribute    = UNSET_VALUE
         @tags                  = []
         @token                 = UNSET_VALUE
+        @volumes               = []
       end
 
       def finalize!
@@ -106,6 +112,18 @@ module VagrantPlugins
         @security_group        = nil if @security_group == UNSET_VALUE
         @ssh_host_attribute    = nil if @ssh_host_attribute == UNSET_VALUE
         @token                 = ENV['SCW_TOKEN'] if @token == UNSET_VALUE
+
+        @volumes = @volumes.map do |volume|
+          if volume.key?(:id)
+            { name: 'volume' }.merge(volume)
+          else
+            {
+              name: 'volume',
+              volume_type: 'l_ssd',
+              organization: @organization
+            }.merge(volume)
+          end
+        end
       end
     end
 

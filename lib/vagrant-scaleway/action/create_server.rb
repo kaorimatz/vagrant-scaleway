@@ -25,6 +25,7 @@ module VagrantPlugins
           name            = config.name
           security_group  = config.security_group
           tags            = config.tags
+          volumes         = config.volumes.map.with_index(1).to_h.invert
 
           env[:ui].info(I18n.t('vagrant_scaleway.creating_server'))
           env[:ui].info(" -- Bootscript: #{bootscript}") if bootscript
@@ -33,10 +34,12 @@ module VagrantPlugins
           env[:ui].info(" -- Name: #{name}")
           env[:ui].info(" -- Security Group: #{security_group}") if security_group
           env[:ui].info(" -- Tags: #{tags}") unless tags.empty?
+          env[:ui].info(" -- Volumes: #{volumes}") unless volumes.empty?
 
           options = {
             name:            name,
             image:           image,
+            volumes:         volumes,
             commercial_type: commercial_type,
             tags:            tags
           }

@@ -38,6 +38,10 @@ Vagrant.configure('2') do |config|
   config.vm.provider :scaleway do |scaleway, override|
     scaleway.organization = 'YOUR_ORGANIZATION_UUID'
     scaleway.token = 'YOUR_TOKEN'
+    scaleway.volumes = [
+      { id: 'ADDITIONAL_VOLUME_UUID' },
+      { size: 50_000_000_000 }
+    ]
 
     override.ssh.private_key_path = '~/.ssh/id_rsa'
   end

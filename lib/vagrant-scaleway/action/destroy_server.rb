@@ -17,7 +17,7 @@ module VagrantPlugins
             server.destroy
           rescue Fog::Scaleway::Compute::InvalidRequestError => e
             if e.message =~ /server should be stopped/
-              server.terminate(false)
+              server.terminate(true)
             else
               raise
             end

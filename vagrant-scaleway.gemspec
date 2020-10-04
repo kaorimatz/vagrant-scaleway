@@ -15,6 +15,9 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/kaorimatz/vagrant-scaleway'
   spec.license       = 'MIT'
 
+  # Following https://github.com/hashicorp/vagrant/blob/f19eb286e4cc2aeae06b632ef1fa44db499df403/vagrant.gemspec#L15
+  spec.required_ruby_version = '~> 2.5', '< 2.8'
+
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.require_paths = ['lib']
 

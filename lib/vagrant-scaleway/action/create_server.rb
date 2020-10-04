@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'vagrant/util/retryable'
 require 'vagrant-scaleway/util/timer'
 
@@ -37,11 +39,11 @@ module VagrantPlugins
           env[:ui].info(" -- Volumes: #{volumes}") unless volumes.empty?
 
           options = {
-            name:            name,
-            image:           image,
-            volumes:         volumes,
+            name: name,
+            image: image,
+            volumes: volumes,
             commercial_type: commercial_type,
-            tags:            tags
+            tags: tags
           }
 
           options[:bootscript] = bootscript if bootscript

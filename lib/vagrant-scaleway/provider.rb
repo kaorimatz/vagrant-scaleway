@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 module VagrantPlugins
   module Scaleway
     class Provider < Vagrant.plugin('2', :provider)
       def initialize(machine)
+        super
         @machine = machine
       end
 
@@ -11,6 +14,7 @@ module VagrantPlugins
         # given action.
         action_method = "action_#{name}"
         return Action.send(action_method) if Action.respond_to?(action_method)
+
         nil
       end
 

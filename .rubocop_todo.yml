@@ -4,7 +4,7 @@ Metrics/AbcSize:
 Metrics/CyclomaticComplexity:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 Metrics/MethodLength:

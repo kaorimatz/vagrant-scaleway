@@ -2,6 +2,13 @@ inherit_from: .rubocop_todo.yml
 
 AllCops:
   DisplayCopNames: true
+  NewCops: enable
 
 Style/GuardClause:
+  Enabled: false
+
+Naming/FileName:
+  Enabled: false
+
+Style/FormatStringToken:
   Enabled: false

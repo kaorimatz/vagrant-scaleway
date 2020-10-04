@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'vagrant-scaleway/action'
 
 module VagrantPlugins
@@ -13,15 +15,15 @@ module VagrantPlugins
 
           @subcommands = Vagrant::Registry.new
           @subcommands.register(:bootscripts) do
-            require File.expand_path('../bootscripts', __FILE__)
+            require File.expand_path('bootscripts', __dir__)
             Bootscripts
           end
           @subcommands.register(:images) do
-            require File.expand_path('../images', __FILE__)
+            require File.expand_path('images', __dir__)
             Images
           end
           @subcommands.register(:'security-groups') do
-            require File.expand_path('../security_groups', __FILE__)
+            require File.expand_path('security_groups', __dir__)
             SecurityGroups
           end
 
@@ -36,6 +38,7 @@ module VagrantPlugins
 
           command_class = @subcommands.get(@sub_command.to_sym) if @sub_command
           return help if !command_class || !@sub_command
+
           @logger.debug("Invoking command class: #{command_class} #{@sub_args.inspect}")
 
           # Initialize and execute the command class

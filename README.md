@@ -1,7 +1,6 @@
 # Vagrant Scaleway Provider
 
 [![Gem](https://img.shields.io/gem/v/vagrant-scaleway.svg?style=flat-square)](https://rubygems.org/gems/vagrant-scaleway)
-[![Gemnasium](https://img.shields.io/gemnasium/kaorimatz/vagrant-scaleway.svg?style=flat-square)](https://gemnasium.com/kaorimatz/vagrant-scaleway)
 
 This is a [Vagrant](http://www.vagrantup.com/) plugin that adds a
 [Scaleway](https://www.scaleway.com/) provider to Vagrant, allowing Vagrant to

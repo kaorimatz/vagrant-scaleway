@@ -17,6 +17,11 @@ module VagrantPlugins
       # @return [String]
       attr_accessor :image
 
+      # The image ID.
+      #
+      # @return [String]
+      attr_accessor :enable_ipv6
+
       # The name of the server.
       #
       # @return [String]
@@ -83,6 +88,7 @@ module VagrantPlugins
         @bootscript            = UNSET_VALUE
         @commercial_type       = UNSET_VALUE
         @image                 = UNSET_VALUE
+        @enable_ipv6           = UNSET_VALUE
         @name                  = UNSET_VALUE
         @organization          = UNSET_VALUE
         @region                = UNSET_VALUE
@@ -99,6 +105,7 @@ module VagrantPlugins
         @bootscript      = nil if @bootscript == UNSET_VALUE
         @commercial_type = 'C2S' if @commercial_type == UNSET_VALUE
         @image           = '75c28f52-6c64-40fc-bb31-f53ca9d02de9' if @image == UNSET_VALUE
+        @enable_ipv6     = true if @enable_ipv6 == UNSET_VALUE
 
         if @name == UNSET_VALUE
           require 'securerandom'

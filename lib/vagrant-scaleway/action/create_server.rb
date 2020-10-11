@@ -22,6 +22,7 @@ module VagrantPlugins
           bootscript      = config.bootscript
           commercial_type = config.commercial_type
           image           = config.image
+          enable_ipv6     = config.enable_ipv6
           name            = config.name
           security_group  = config.security_group
           tags            = config.tags
@@ -31,6 +32,7 @@ module VagrantPlugins
           env[:ui].info(" -- Bootscript: #{bootscript}") if bootscript
           env[:ui].info(" -- Commercial Type: #{commercial_type}")
           env[:ui].info(" -- Image: #{image}")
+          env[:ui].info(" -- IPv6 enabled: #{enable_ipv6}")
           env[:ui].info(" -- Name: #{name}")
           env[:ui].info(" -- Security Group: #{security_group}") if security_group
           env[:ui].info(" -- Tags: #{tags}") unless tags.empty?
@@ -41,6 +43,7 @@ module VagrantPlugins
             image:           image,
             volumes:         volumes,
             commercial_type: commercial_type,
+            enable_ipv6: enable_ipv6,
             tags:            tags
           }
 

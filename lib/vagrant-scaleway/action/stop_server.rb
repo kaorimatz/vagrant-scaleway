@@ -14,7 +14,7 @@ module VagrantPlugins
             env[:ui].info(I18n.t('vagrant_scaleway.already_status', status: env[:machine].state.id))
           else
             env[:ui].info(I18n.t('vagrant_scaleway.stopping'))
-            server.poweroff(false)
+            server.poweroff(true)
           end
 
           @app.call(env)

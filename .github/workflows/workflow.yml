@@ -1,0 +1,23 @@
+name: Lint
+on: [push, pull_request]
+jobs:
+  rubocop:
+    name: Rubocop linting
+    strategy:
+      matrix:
+        os: [ubuntu, macos]
+        ruby: [2.5, 2.6, 2.7]
+    runs-on: ${{ matrix.os }}-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Install bundler
+        run: gem install bundler
+      - name: Install gems dependecies
+        run: bundle install
+      - name: Run rubocop
+        run: bundler exec rubocop

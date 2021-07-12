@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module VagrantPlugins
   module Scaleway
     module Action
@@ -7,9 +9,7 @@ module VagrantPlugins
         end
 
         def call(env)
-          if env[:machine].config.vm.networks.length > 1
-            env[:ui].warn(I18n.t('vagrant_scaleway.warn_networks'))
-          end
+          env[:ui].warn(I18n.t('vagrant_scaleway.warn_networks')) if env[:machine].config.vm.networks.length > 1
 
           @app.call(env)
         end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'vagrant/util/retryable'
 require 'vagrant-scaleway/util/timer'
 
@@ -60,11 +62,12 @@ module VagrantPlugins
               loop do
                 # If we're interrupted then just back out
                 break if env[:interrupted]
+
                 # When a server comes up, it's networking may not be ready by
                 # the time we connect.
                 begin
                   break if env[:machine].communicate.ready?
-                rescue
+                rescue StandardError
                   if network_ready_retries < network_ready_retries_max
                     network_ready_retries += 1
                     @logger.warn(I18n.t('vagrant_scaleway.waiting_for_ssh, retrying'))

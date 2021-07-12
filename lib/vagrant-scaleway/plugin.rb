@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 begin
   require 'vagrant'
 rescue LoadError
@@ -6,9 +8,7 @@ end
 
 # This is a sanity check to make sure no one is attempting to install
 # this into an early Vagrant version.
-if Vagrant::VERSION < '1.5.0'
-  raise 'Scaleway provider is only compatible with Vagrant 1.5+'
-end
+raise 'Scaleway provider is only compatible with Vagrant 1.5+' if Vagrant::VERSION < '1.5.0'
 
 module VagrantPlugins
   module Scaleway

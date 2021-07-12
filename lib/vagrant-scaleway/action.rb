@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'vagrant/action/builder'
 
 module VagrantPlugins
@@ -184,7 +186,7 @@ module VagrantPlugins
       end
 
       # The autoload farm
-      action_root = Pathname.new(File.expand_path('../action', __FILE__))
+      action_root = Pathname.new(File.expand_path('action', __dir__))
       autoload :ConnectScaleway, action_root.join('connect_scaleway')
       autoload :CreateServer, action_root.join('create_server')
       autoload :DestroyServer, action_root.join('destroy_server')

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module VagrantPlugins
   module Scaleway
     class Config < Vagrant.plugin('2', :config)
@@ -80,6 +82,7 @@ module VagrantPlugins
       attr_accessor :volumes
 
       def initialize
+        super
         @bootscript            = UNSET_VALUE
         @commercial_type       = UNSET_VALUE
         @image                 = UNSET_VALUE
